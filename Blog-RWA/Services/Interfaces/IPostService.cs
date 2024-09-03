@@ -1,6 +1,6 @@
-﻿using Blog_RWA.Entities;
+﻿using BlogR.Entities;
 
-namespace Blog_RWA.Services.Implementation
+namespace BlogR.Services.Interfaces
 {
     public interface IPostService
     {

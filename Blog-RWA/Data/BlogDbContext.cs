@@ -1,8 +1,8 @@
-﻿using Blog_RWA.Entities;
+﻿using BlogR.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 
-namespace Blog_RWA.Data
+namespace BlogR.Data
 {
     public class BlogDbContext : DbContext
     {

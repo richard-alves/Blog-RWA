@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace Blog_RWA.Entities
+namespace BlogR.Entities
 {
     public class PostBaseModel
     {

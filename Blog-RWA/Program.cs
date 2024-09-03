@@ -1,9 +1,9 @@
-using Blog_RWA.Data;
-using Blog_RWA.Hubs;
-using Blog_RWA.Services.Implementation;
-using Blog_RWA.Services.Interfaces;
+using BlogR.Data;
+using BlogR.Hubs;
+using BlogR.Services;
+using BlogR.Services.Implementations;
+using BlogR.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -24,6 +24,7 @@ options.UseSqlite("Data Source=blogRwaDb.db")
 
 builder.Services.AddScoped<IPostService, PostService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>

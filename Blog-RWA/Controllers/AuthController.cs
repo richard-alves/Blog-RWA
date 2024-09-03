@@ -1,8 +1,8 @@
-﻿using Blog_RWA.Entities;
-using Blog_RWA.Services.Implementation;
+﻿using BlogR.Entities;
+using BlogR.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Blog_RWA.Controllers
+namespace BlogR.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -13,20 +13,6 @@ namespace Blog_RWA.Controllers
         public AuthController(IAuthService authService)
         {
             _authService = authService;
-        }
-
-        [HttpGet("getAllUsers")]
-        public async Task<IActionResult> GetAllUsers()
-        {
-            try
-            {
-                var users = await _authService.GetAllUsers();
-                return Ok(new { users });
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new { message = ex.Message });
-            }
         }
 
         [HttpPost("register")]

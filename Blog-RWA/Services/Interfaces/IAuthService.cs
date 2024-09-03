@@ -1,12 +1,10 @@
-﻿using Blog_RWA.Entities;
+﻿using BlogR.Entities;
 
-namespace Blog_RWA.Services.Implementation
+namespace BlogR.Services.Interfaces
 {
     public interface IAuthService
     {
         Task<string> Register(UserModel user, string password);
         Task<string> Login(string username, string password);
-        Task<bool> UserExists(string username);
-        Task<IEnumerable<UserModel>> GetAllUsers();
     }
 }

@@ -1,11 +1,10 @@
-﻿using Blog_RWA.Entities;
-using Blog_RWA.Services.Implementation;
-using Blog_RWA.Services.Interfaces;
+﻿using BlogR.Entities;
+using BlogR.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
-namespace Blog_RWA.Controllers
+namespace BlogR.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

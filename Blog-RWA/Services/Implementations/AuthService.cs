@@ -1,6 +1,6 @@
-﻿using Blog_RWA.Data;
-using Blog_RWA.Entities;
-using Blog_RWA.Services.Implementation;
+﻿using BlogR.Data;
+using BlogR.Entities;
+using BlogR.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -8,22 +8,24 @@ using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Blog_RWA.Services.Interfaces
+namespace BlogR.Services.Implementations
 {
     public class AuthService : IAuthService
     {
         private readonly BlogDbContext _context;
         private readonly IConfiguration _configuration;
+        private readonly IUserService _userService;
 
-        public AuthService(BlogDbContext context, IConfiguration configuration)
+        public AuthService(BlogDbContext context, IConfiguration configuration, IUserService userService)
         {
             _context = context;
             _configuration = configuration;
+            _userService = userService;
         }
 
         public async Task<string> Register(UserModel user, string password)
         {
-            if (await UserExists(user.Username))
+            if (await _userService.UserExists(user.Username))
                 throw new Exception("Usuário já existe");
 
             using var hmac = new HMACSHA512();
@@ -54,16 +56,6 @@ namespace Blog_RWA.Services.Interfaces
             return GenerateJwtToken(user);
         }
 
-        public async Task<bool> UserExists(string username)
-        {
-            return await _context.Users.AnyAsync(x => x.Username == username);
-        }
-
-        public async Task<IEnumerable<UserModel>> GetAllUsers()
-        {
-            return await _context.Users.ToListAsync();
-        }
-
         private string GenerateJwtToken(UserModel user)
         {
             var claims = new[]
@@ -88,5 +80,4 @@ namespace Blog_RWA.Services.Interfaces
             return tokenHandler.WriteToken(token);
         }
     }
-
 }

@@ -1,11 +1,11 @@
-﻿using Blog_RWA.Data;
-using Blog_RWA.Entities;
-using Blog_RWA.Hubs;
-using Blog_RWA.Services.Implementation;
+﻿using BlogR.Data;
+using BlogR.Entities;
+using BlogR.Hubs;
+using BlogR.Services.Interfaces;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 
-namespace Blog_RWA.Services.Interfaces
+namespace BlogR.Services.Implementations
 {
     public class PostService : IPostService
     {

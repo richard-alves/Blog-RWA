@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Blog_RWA.Migrations
+namespace BlogR.Migrations
 {
     /// <inheritdoc />
     public partial class CreateObjects : Migration
