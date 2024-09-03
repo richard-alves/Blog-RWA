@@ -27,3 +27,6 @@ node_modules/
 # Ignore publish output
 publish/
 /blogRwaDb.db
+/Blog-RWA/blogRwaDb.db
+/Blog-RWA/blogRwaDb.db-shm
+/Blog-RWA/blogRwaDb.db-wal
