@@ -13,8 +13,8 @@ namespace Blog_RWA.Hubs
 
         public override async Task OnConnectedAsync()
         {
-            _logger.LogInformation($"Client connected: {Context.ConnectionId}");
-            Console.WriteLine($"Client connected: {Context.ConnectionId}"); // Também imprime na janela de comando
+            _logger.LogInformation($"Cliente conectado: {Context.ConnectionId}");
+            Console.WriteLine($"Client connected: {Context.ConnectionId}");
             await base.OnConnectedAsync();
         }
 

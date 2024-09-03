@@ -23,18 +23,18 @@ namespace WinListener
             {
                 this.Invoke((Action)(() =>
                 {
-                    textBox1.AppendText($"Nova postagem de {user}: {message}{Environment.NewLine}");
+                    textBox1.AppendText($"Novo post de {user}: {message}{Environment.NewLine}");
                 }));
             });
 
             try
             {
                 await _connection.StartAsync();
-                textBox1.AppendText("Conectado ao Hub SignalR. Aguardando notificações..." + Environment.NewLine);
+                textBox1.AppendText("Conectado ao WebSocket. Aguardando notificações..." + Environment.NewLine);
             }
             catch (Exception ex)
             {
-                textBox1.AppendText($"Erro ao conectar: {ex.Message}" + Environment.NewLine);
+                textBox1.AppendText($"Erro ao conectar ao WebSocket: {ex.Message}" + Environment.NewLine);
             }
         }
 

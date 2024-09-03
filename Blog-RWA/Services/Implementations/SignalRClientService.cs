@@ -28,15 +28,15 @@ public class SignalRClientService : IHostedService
 
             _connection.On<string, string>("ReceiveMessage", (user, message) =>
             {
-                Console.WriteLine($"Notificação interna: Nova mensagem de {user}: {message}");
+                Console.WriteLine($"########################## Notificação na API: Novo post de {user}: {message} ##########################");
             });
 
             await _connection.StartAsync();
-            _logger.LogInformation("SignalR Client conectado ao hub.");
+            _logger.LogInformation("Conectado ao WebSocket. Aguardando notificações...");
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Erro ao conectar ao SignalR Hub.");
+            _logger.LogError(ex, "Erro ao conectar ao WebSocket.");
         }
     }
 

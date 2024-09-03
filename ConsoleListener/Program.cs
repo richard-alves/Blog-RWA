@@ -21,16 +21,16 @@ var connection = new HubConnectionBuilder()
 try
 {
     await connection.StartAsync();
-    Console.WriteLine("Connected to the Hub!");
+    Console.WriteLine("Conectado ao WebSocket. Aguardando notificações...");
 
     connection.On<string, string>("ReceiveMessage", (user, message) =>
     {
-        Console.WriteLine($"Message received from {user}: {message}");
+        Console.WriteLine($"Novo post de {user}: {message}");
     });
 
     Console.ReadLine();
 }
 catch (Exception ex)
 {
-    Console.WriteLine($"Error: {ex.Message}");
+    Console.WriteLine($"Erro ao conectar ao WebSocket: {ex.Message}");
 }
