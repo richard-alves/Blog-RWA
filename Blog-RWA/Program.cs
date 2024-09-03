@@ -3,6 +3,7 @@ using Blog_RWA.Hubs;
 using Blog_RWA.Services.Implementation;
 using Blog_RWA.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -67,6 +68,7 @@ builder.Services.AddSwaggerGen(c =>
 
 builder.Services.AddSignalR();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddHostedService<SignalRClientService>();
 
 var app = builder.Build();
 
@@ -96,5 +98,21 @@ app.UseEndpoints(endpoints =>
 });
 
 app.MapControllers();
+
+//app.Lifetime.ApplicationStarted.Register(async () =>
+//{
+//    await Task.Delay(10000); // Aguarde 1 segundo antes de iniciar a conexão
+
+//    var connection = new HubConnectionBuilder()
+//        .WithUrl("http://localhost:5000/notificationhub")
+//        .Build();
+
+//    connection.On<string, string>("ReceiveMessage", (user, message) =>
+//    {
+//        Console.WriteLine($"Notificação interna: Nova mensagem de {user}: {message}");
+//    });
+
+//    await connection.StartAsync();
+//});
 
 app.Run();
